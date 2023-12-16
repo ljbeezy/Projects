@@ -1,0 +1,36 @@
+import requests
+from bs4 import BeautifulSoup
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+def scrape_imdb_top_movies():
+    # Send a GET request to IMDb's top 250 movies page
+    url = 'https://www.imdb.com/chart/top'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    # Find all the movie titles on the page
+    movie_titles = soup.select('.titleColumn a')
+    movie_titles = [title.text for title in movie_titles]
+
+    return movie_titles
+
+def create_wordcloud(words):
+    # Generate word cloud
+    wordcloud = WordCloud(width=800, height=400, background_color='white').generate(' '.join(words))
+
+    # Display word cloud
+    plt.figure(figsize=(10, 8))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis('off')
+    plt.show()
+
+def main():
+    print("Scraping IMDb's top-rated movies...")
+    movie_titles = scrape_imdb_top_movies()
+
+    print("\nCreating a word cloud based on movie titles...")
+    create_wordcloud(movie_titles)
+
+if __name__ == "__main__":
+    main()
