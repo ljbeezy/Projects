@@ -1,46 +1,52 @@
-import math
-
+import math  # Importing the math module to access mathematical functions
 
 def complex_calculator():
     print("Complex Calculator")
     print("Operations: +, -, *, /, square, square root, power, sin, cos, tan, log, factorial")
 
+    # Get user input for the first number and the operator
     num1 = float(input("Enter first number: "))
     operator = input("Enter operator: ")
 
+    # Check if the entered operator is one of the special operations
     if operator in ('square', 'square root', 'sin', 'cos', 'tan', 'log', 'factorial'):
+        # Perform calculations based on the special operator entered
         if operator == 'square':
-            result = num1 ** 2
+            result = num1 ** 2  # Square the number
         elif operator == 'square root':
-            result = math.sqrt(num1)
+            result = math.sqrt(num1)  # Calculate square root
         elif operator == 'sin':
-            result = math.sin(math.radians(num1))
+            result = math.sin(math.radians(num1))  # Calculate sine (requires conversion to radians)
         elif operator == 'cos':
-            result = math.cos(math.radians(num1))
+            result = math.cos(math.radians(num1))  # Calculate cosine (requires conversion to radians)
         elif operator == 'tan':
-            result = math.tan(math.radians(num1))
+            result = math.tan(math.radians(num1))  # Calculate tangent (requires conversion to radians)
         elif operator == 'log':
-            result = math.log10(num1)
+            result = math.log10(num1)  # Calculate logarithm base 10
         elif operator == 'factorial':
-            result = math.factorial(int(num1))
+            result = math.factorial(int(num1))  # Calculate factorial (convert to integer first)
     else:
+        # If the operator is not a special operation, get the second number for binary operations
         num2 = float(input("Enter second number: "))
 
+        # Perform calculations based on the operator entered
         if operator == '+':
-            result = num1 + num2
+            result = num1 + num2  # Addition
         elif operator == '-':
-            result = num1 - num2
+            result = num1 - num2  # Subtraction
         elif operator == '*':
-            result = num1 * num2
+            result = num1 * num2  # Multiplication
         elif operator == '/':
             if num2 != 0:
-                result = num1 / num2
+                result = num1 / num2  # Division (check for division by zero)
             else:
-                result = "Cannot divide by zero!"
+                result = "Cannot divide by zero!"  # Error message for division by zero
         elif operator == 'power':
-            result = num1 ** num2
+            result = num1 ** num2  # Exponentiation
         else:
-            result = "Invalid operator"
+            result = "Invalid operator"  # Error message for an unrecognized operator
 
+    # Display the result of the calculation
     print("Result: ", result)
-complex_calculator()
+
+complex_calculator()  # Call the complex_calculator function to execute the calculator
