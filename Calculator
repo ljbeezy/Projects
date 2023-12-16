@@ -1,0 +1,46 @@
+import math
+
+
+def complex_calculator():
+    print("Complex Calculator")
+    print("Operations: +, -, *, /, square, square root, power, sin, cos, tan, log, factorial")
+
+    num1 = float(input("Enter first number: "))
+    operator = input("Enter operator: ")
+
+    if operator in ('square', 'square root', 'sin', 'cos', 'tan', 'log', 'factorial'):
+        if operator == 'square':
+            result = num1 ** 2
+        elif operator == 'square root':
+            result = math.sqrt(num1)
+        elif operator == 'sin':
+            result = math.sin(math.radians(num1))
+        elif operator == 'cos':
+            result = math.cos(math.radians(num1))
+        elif operator == 'tan':
+            result = math.tan(math.radians(num1))
+        elif operator == 'log':
+            result = math.log10(num1)
+        elif operator == 'factorial':
+            result = math.factorial(int(num1))
+    else:
+        num2 = float(input("Enter second number: "))
+
+        if operator == '+':
+            result = num1 + num2
+        elif operator == '-':
+            result = num1 - num2
+        elif operator == '*':
+            result = num1 * num2
+        elif operator == '/':
+            if num2 != 0:
+                result = num1 / num2
+            else:
+                result = "Cannot divide by zero!"
+        elif operator == 'power':
+            result = num1 ** num2
+        else:
+            result = "Invalid operator"
+
+    print("Result: ", result)
+complex_calculator()
